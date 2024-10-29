@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj3no00x0brer"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_5xhio"]
+[ext_resource type="Texture2D" uid="uid://xly5f07k17bg" path="res://textures/Player/player_sprite.png" id="1_x0ere"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sn0ic"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_3i5oj"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_joljk"]
+_data = {
+"new_animation": SubResource("Animation_3i5oj")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5xhio")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("1_x0ere")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 5)
+shape = SubResource("CapsuleShape2D_sn0ic")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_joljk")
+}
